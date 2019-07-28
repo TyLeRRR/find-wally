@@ -6,7 +6,7 @@ The children book series [Where's Wally?](https://en.wikipedia.org/wiki/Where%27
 
 Original Books             |  Random Scene
 :-------------------------:|:-------------------------:
-<img src="books.JPG" width="400"/> | <img src="https://media.buzz.ie/uploads/2016/06/Zalando-Festival-Map-No-Title-Final-2.jpg" width="400" />
+<img src="books.JPG" width="400"/> | <img src="https://i.imgur.com/91qfVY7.jpg" width="400" />
 
 With this project, we wanted to build software which helps to identify Wally in just a few seconds by using computer vision and machine learning. 
 
