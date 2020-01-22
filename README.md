@@ -8,7 +8,7 @@ Original Books             |  Random Scene
 :-------------------------:|:-------------------------:
 <img src="books.JPG" width="400"/> | <img src="https://i.imgur.com/91qfVY7.jpg" width="400" />
 
-With this project, we wanted to build software which helps to identify Wally in just a few seconds by using computer vision and machine learning. 
+With this project, we wanted to build software that helps to identify Wally in just a few seconds by using computer vision and machine learning. 
 
 <img src="wip.jpg" alt="drawing" width="400"/>
 
@@ -16,13 +16,13 @@ Two approaches were implemented and compared:
 1. [Find Wally](https://github.com/TyLeRRR/find-wally/tree/master/autoML) with Google AutoML Vision.
 2. [Find Wally](https://github.com/TyLeRRR/find-wally/tree/master/handmade) with Tensorflow object detection model *Faster RCNN Inception v2* & OpenCV.
 
-### Tensorflow + OpenCV Implementation
+### TensorFlow + OpenCV Implementation
 We use the open-source machine learning library Tensorflow, namely - pre-trained model *Faster RCNN Inception v2*. With the help of OpenCV, we are streaming a video via the webcam and use the model to find Wally.
 
 #### Dataset Preparation
 To build the training set, we have to create a series of Where's Wally puzzle pictures with the spots where Wally appears. We used two Wally books and photographed them entirely with different resolutions and image qualities. We collected ~200 images. 20% of which were used for the evaluation. 
 
-Our next step was to label all the pictures. Using the [LabelImg](https://github.com/tzutalin/labelImg) application, we created the XML files with x and y coordinates with Wally object for each image. With the help of `xml_to_csv.py`, we convert all XML to a CSV files. 
+Our next step was to label all the pictures. Using the [LabelImg](https://github.com/tzutalin/labelImg) application, we created the XML files with x and y coordinates with Wally object for each image. With the help of `xml_to_csv.py`, we convert all XML to a CSV file. 
 The training CSV and the training dataset must be packed into a `.tfrecord` file. For that, we used `create_tf_record.py`. The same happens with the evaluation CSV and the evaluation dataset. Now we have two `.tfrecord` files: ` train.record` and `eval.record`.
 
 #### Model Preparation
@@ -35,7 +35,7 @@ The following parameters must be adjusted:
 - `num_examples` - evaluation dataset size.
 - `max_evals` - number of iterations for each evaluation.
 
-The last but not least we have to configure `labels.txt` map. It contains the list of labels for our objects. Since we are only looking for one object type, this file consists of only one Wally object.
+Last but not least, we have to configure the `labels.txt` map. It contains the list of labels for our objects. Since we are only looking for one object type, this file consists of only one Wally object.
 
 #### Training
 For the training, we used Google Cloud. The `.tfrecord` files and other configs were uploaded into the bucket so that the training job can use them for training. The general rule was to end the training when the loss on our evaluation set is no longer decreasing or is generally very small (in our case below 0.01).
